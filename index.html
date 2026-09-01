@@ -68,8 +68,6 @@ p{font-size:clamp(17px,2.5vw,21px);line-height:1.7;color:var(--text-soft); font-
 .frame{width:min(420px,80vw);aspect-ratio:1/1;margin:30px auto;border-radius:25px;padding:10px;background:linear-gradient(135deg,var(--gold),#2b020c,var(--light-gold),#120202);box-shadow:0 0 50px rgba(212,175,55,0.2)}
 .frame-inner{height:100%;border-radius:18px;overflow:hidden;background:#1a0604;position:relative;display:flex;align-items:center;justify-content:center}
 .frame img{width:100%;height:100%;object-fit:cover;display:block}
-.placeholder{padding:30px;text-align:center;color:var(--gold);font-family:"Playfair Display", serif;font-size:22px; font-style: italic;}
-input[type=file]{display:none}.upload{display:inline-block}
 
 /* Game Area */
 .game{text-align:center}
@@ -201,13 +199,10 @@ Thank you for being mine. I love you more than words can ever say.</p>
   <h2>My Sweetest View📸</h2>
   <div class="frame">
    <div class="frame-inner">
-    <img id="photoImg" alt="Nasib" style="display:none">
-    <div class="placeholder" id="placeholder">👑<br><br>Add My Rabbit Favourite Picture<br><span class="small" style="color:var(--gold);">Choose a photo below</span></div>
+    <!-- Replace the URL inside the src below with your own picture link -->
+    <img id="photoImg" src="xyz.jpg" alt="Nasib" style="display:block">
    </div>
   </div>
-  <label class="btn upload">✨ Add Picture
-   <input type="file" id="photoInput" accept="image/*">
-  </label>
  </div>
 </section>
 
@@ -315,16 +310,7 @@ function countdown(){
 }
 countdown(); setInterval(countdown, 1000);
 
-/* 4. PHOTO UPLOAD */
-document.getElementById('photoInput').addEventListener('change', e=>{
- const file = e.target.files[0]; if(!file)return;
- const img = document.getElementById('photoImg'); 
- img.src = URL.createObjectURL(file); 
- img.style.display = 'block';
- document.getElementById('placeholder').style.display = 'none';
-});
-
-/* 5. CATCH THE BALLOON GAME */
+/* 4. CATCH THE BALLOON GAME */
 let score = 0, gameTime = 25, gameTimer, itemTimer, isGameOver = false;
 const box = document.getElementById('gamebox');
 // More balloons, fewer traps to make it fair but risky
@@ -438,7 +424,7 @@ function winGame() {
     }, 800);
 }
 
-/* 6. CELEBRATION SHOWER */
+/* 5. CELEBRATION SHOWER */
 function celebrate(){
  for(let i=0; i<80; i++){
   const e = document.createElement('div');
